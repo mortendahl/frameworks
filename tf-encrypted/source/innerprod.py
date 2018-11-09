@@ -17,5 +17,6 @@ x1 = tfe.define_private_input('server1', lambda: load_from_textfile('source/Inpu
 y = tfe.matmul(x0, x1.transpose())
 
 with tfe.Session() as sess:
+
   # reveal output and print
   print(sess.run(y.reveal()))
