@@ -10,11 +10,12 @@ from data_loading import load_from_textfile
 # }))
 
 # load inputs
-x0 = tfe.define_private_input('server0', lambda: load_from_textfile('source/InputData/innerprod.P0', 9))
-x1 = tfe.define_private_input('server1', lambda: load_from_textfile('source/InputData/innerprod.P1', 9))
+num_rows = 9
+x0 = tfe.define_private_input('server0', lambda: load_from_textfile('source/InputData/innerprod-p0', (1, num_rows)))
+x1 = tfe.define_private_input('server1', lambda: load_from_textfile('source/InputData/innerprod-p1', (num_rows, 1)))
 
 # compute inner product
-y = tfe.matmul(x0, x1.transpose())
+y = tfe.matmul(x0, x1)
 
 with tfe.Session() as sess:
 

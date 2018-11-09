@@ -10,9 +10,10 @@ from data_loading import load_from_textfile
 # }))
 
 # load inputs
-x0 = tfe.define_private_input('server0', lambda: load_from_textfile('source/InputData/mult3.P0', 9))
-x1 = tfe.define_private_input('server1', lambda: load_from_textfile('source/InputData/mult3.P1', 9))
-x2 = tfe.define_private_input('server1', lambda: load_from_textfile('source/InputData/mult3.P2', 9))
+num_rows = 9
+x0 = tfe.define_private_input('server0', lambda: load_from_textfile('source/InputData/mult3-p0', (num_rows,)))
+x1 = tfe.define_private_input('server1', lambda: load_from_textfile('source/InputData/mult3-p1', (num_rows,)))
+x2 = tfe.define_private_input('server1', lambda: load_from_textfile('source/InputData/mult3-p2', (num_rows,)))
 
 # compute product
 y = x0 * x1 * x2
